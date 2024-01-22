@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Atomic Comics Cart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles.css">
+    <script src="https://unpkg.com/htmx.org@1.5.0/dist/htmx.min.js"></script>
+</head>
+<body>
+    <a href="{{ url_for('index') }}"><img src="../static/atomic_comic_logo.png" alt="Atomic Comics Logo" class="comic-logo"></a>
+    <a href="{{ url_for('cart') }}"><img src="../static/cart.png" alt="Cart Logo" class="cart-logo"></a>
+    <div class="content">
+        <h1>Cart</h1>
+        <form method="POST" action="{{ url_for('clear_all') }}">
+            <button type="submit" class="clear-all">Clear All</button>
+        </form>
+        <a href="{{ url_for('index') }}"><button type="submit" class="back-home">Continue Ordering</button></a>
+        <table>
+            <tr>
+                <th>Issue Title</th>
+                <th>Price</th>
+            </tr>
+            {% for item in cart_items %}
+                <tr>
+                    <td>{{ item.issue_title }}</td>
+                    <td>{{ item.total_price }}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <th>Total Price</th>
+                <th>{{ total_cart_price }}</th>
+            </tr>
+        </table>
+        <br>
+        <form method="POST" action="{{ url_for('purchase') }}">
+            <button type="submit" class="purchase">Purchase</button>
+        </form>
+    </div>
+</body>
+</html>

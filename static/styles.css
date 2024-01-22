@@ -1,0 +1,49 @@
+.comic-logo {
+    width: 350px;
+    height: 120px;
+}
+
+.cart-logo {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 50px;
+    margin-left: 800px;
+}
+
+.content {
+    margin-top: 10px;
+    margin-left: 100px;
+}
+
+.cart-button {
+    position: absolute;
+    top: 200px;
+    left: 1000px;
+}
+
+.clear-all {
+    position: absolute;
+    top: 200px;
+    left: 1000px;
+}
+
+.back-home {
+    position: absolute;
+    top: 250px;
+    left: 1000px;
+}
+
+table {
+    width: 800px;
+    border-collapse: separate;
+    overflow: hidden;
+}
+
+td, th {
+    width: 50px;
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    text-overflow: ellipsis;
+}

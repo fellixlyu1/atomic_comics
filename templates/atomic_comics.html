@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles.css">
+    <script src="https://unpkg.com/htmx.org@1.5.0/dist/htmx.min.js"></script>
+    <title>Shop at Atomic Comics</title>
+</head>
+<body>
+    <a href="{{ url_for('index') }}"><img src="../static/atomic_comic_logo.png" alt="Atomic Comics Logo" class="comic-logo"></a>
+    <a href="{{ url_for('cart') }}"><img src="../static/cart.png" alt="Cart Logo" class="cart-logo"></a>
+    <div class="content">
+        <h1>Inventory</h1>
+        <table>
+            <tr>
+                <th>Issue Title</th>
+                <th>Publish Date</th>
+                <th>Imprint</th>
+                <th>Format</th>
+                <th>Rating</th>
+                <th>Price</th>
+                <th>Details</th>
+            </tr>
+            {% for comic in comics %}
+                <tr>
+                    <td>{{ comic.issue_title }}</td>
+                    <td>{{ comic.publish_date }}</td>
+                    <td>{{ comic.Imprint }}</td>
+                    <td>{{ comic.Format }}</td>
+                    <td>{{ comic.Rating }}</td>
+                    <td>{{ comic.Price }}</td>
+                    <td>
+                        <a href="{{ url_for('comic_details', title=comic.issue_title) }}">Details</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

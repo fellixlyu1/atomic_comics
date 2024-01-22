@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles.css">
+    <script src="https://unpkg.com/htmx.org@1.5.0/dist/htmx.min.js"></script>
+    <title>Comic Details</title>
+</head>
+<body>
+    <a href="{{ url_for('index') }}"><img src="../static/atomic_comic_logo.png" alt="Atomic Comics Logo" class="comic-logo"></a>
+    <a href="{{ url_for('cart') }}"><img src="../static/cart.png" alt="Cart Logo" class="cart-logo"></a>
+    <div class="content">
+        <form method="POST" action="{{ url_for('add_to_cart') }}">
+            <input type="hidden" name="title" value="{{ comic.issue_title }}">
+            <button type="submit" class="cart-button">Add To Cart</button>
+        </form>
+        <h1>{{ comic.issue_title }}</h1>
+        <p>Comic Name: {{ comic.comic_name }}</p>
+        <p>Active Year: {{ comic.active_years }}</p>
+        <p>Publish Date: {{ comic.publish_date }}</p>
+        <p>Penciler: {{ comic.penciler }}</p>
+        <p>Writer: {{ comic.writer }}</p>
+        <p>Cover Artist: {{ comic.cover_artist }}</p>
+        <p>Imprint: {{ comic.Imprint }}</p>
+        <p>Format: {{ comic.Format }}</p>
+        <p>Rating: {{ comic.Rating }}</p>
+        <p>Price: {{ comic.Price }}</p>
+        <p>Description: {{ comic.issue_description }}</p>
+
+        <h2>Recommended Comics</h2>
+        <ul>
+            {% for recommendation in recommendations %}
+                <li>
+                    <a href="{{ url_for('comic_details', title=recommendation) }}">
+                    {{ recommendation }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
